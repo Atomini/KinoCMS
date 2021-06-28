@@ -1,0 +1,215 @@
+{% load static %}
+{% load widget_tweaks %}
+{% include 'admin/base.html' %}
+{% block page_content %}
+
+<div class="content-wrapper" style="background-color: white">
+
+    <!-- Main content -->
+    <section class="content" >
+        <div class="container-fluid">
+
+            <form method="POST" enctype='multipart/form-data' >
+                {% csrf_token %}
+
+                    {# название филима #}
+                    <div class="row" style="margin: 25px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                            {{ form.film_name.label }}
+                        </div>
+                        <div class="col-md-5 col align-self-center"> {{ form.film_name }}
+                                <p style="color: red">{{ form.film_name.errors.as_text }}</p>
+                        </div>
+                    </div>
+                    {# название филима end #}
+                    {# Описание филима#}
+                    <div class="row" style="margin: 25px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                            {{ form.film_descriptions.label }}
+                        </div>
+                        <div class="col-md-8 col align-self-center" style="height: 400px">
+                            {{ form.media }}
+                            {{ form.film_descriptions }}
+                            <p style="color: red">{{ form.film_descriptions.errors.as_text }}</p>
+                        </div>
+                    </div>
+                    {# Описание филима end#}
+                    {# Главная картинка филима#}
+                     <div class="row" style="margin: 25px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                            {{ form.film_main_image.label }}
+                        </div>
+
+                            <div class="col-md-5 col align-self-center">
+                                <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image" style="height:250px"></div>
+                                <div class="row">{{ form.film_main_image }}
+                                    <p style="color: red">{{ form.film_main_image.errors.as_text }}</p>
+                                </div>
+                            </div>
+                    </div>
+                    {# Главная картинка филима end#}
+                    {# Галярея картинок#}
+                    <div class="row" style="margin: 25px;font-size: 20px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                            Галирея картинок
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 25px">
+                        <div class="col-md-1" style="font-size: 16px">
+                            Размер: 1000x190
+                        </div>
+                            <div class="col-md-2 col align-self-center">
+                                <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_small" style="height:250px"></div>
+                                <div class="row">{{ form.image_1 }}
+                                    <p style="color: red">{{ form.image_1.errors.as_text }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col align-self-center">
+                                <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_small" style="height:250px"></div>
+                                <div class="row">{{ form.image_2 }}
+                                    <p style="color: red">{{ form.image_2.errors.as_text }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col align-self-center">
+                                <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_small" style="height:250px"></div>
+                                <div class="row">{{ form.image_3 }}
+                                    <p style="color: red">{{ form.image_3.errors.as_text }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col align-self-center">
+                                <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_small" style="height:250px"></div>
+                                <div class="row">{{ form.image_4 }}
+                                    <p style="color: red">{{ form.image_4.errors.as_text }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col align-self-center">
+                                <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_small" style="height:250px"></div>
+                                <div class="row">{{ form.image_5 }}
+                                    <p style="color: red">{{ form.image_5.errors.as_text }}</p>
+                                </div>
+                            </div>
+                    </div>
+                    {# Галярея картинок end#}
+                    {# Статус фильма#}
+                    <div class="row" style="margin: 25px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                            {{ form.status.label }}
+                        </div>
+                        <div class="col-md-3 col align-self-center"> {{ form.status|attr:"class : form-control" }}
+                            <p style="color: red">{{ form.status.errors.as_text }}</p>
+                        </div>
+                    </div>
+                    {# Статус фильма end#}
+                    {# ссылка на трелер#}
+                    <div class="row" style="margin: 25px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                            {{ form.trailer_link.label }}
+                        </div>
+                            <div class="col-md-8 col align-self-center"> {{ form.trailer_link }}
+                                <p style="color: red">{{ form.trailer_link.errors.as_text }}</p>
+                            </div>
+                    </div>
+                    {# ссылка на трелер end#}
+                    {# тип кино#}
+                    <div class="row" style="margin: 25px">
+                        <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                             Тип кино
+                        </div>
+                        <div class="col-md-1 col align-self-center " style="font-size: 20px">
+                            {{ form.type_3D }}     {{ form.type_3D.label }}
+                            <p style="color: red">{{ form.type_3D.errors.as_text }}</p>
+                        </div>
+
+                        <div class="col-md-1 col align-self-center " style="font-size: 20px">
+                            {{ form.type_2D }}     {{ form.type_2D.label }}
+                            <p style="color: red">{{ form.type_2D.errors.as_text }}</p>
+                        </div>
+                        <div class="col-md-1 col align-self-center" style="font-size: 20px">
+                            {{ form.type_IMAX }}    {{ form.type_IMAX.label }}
+                            <p style="color: red">{{ form.type_IMAX.errors.as_text }}</p>
+                        </div>
+
+                    </div>
+                    {# тип кино end#}
+                    {# SEO блок #}
+                    <div class="row" style="margin: 25px;font-size: 20px">
+                        <div class="col-md-1 offset-md-1" style="font-size: 20px">
+                            SEO Блок
+                        </div>
+                        <div class="col-md-7" style="font-size: 20px">
+                                <div class="row" style="margin: 25px">
+                                    <div class="col-md-2" style="font-size: 20px">
+                                        {{ form.SEO_url.label }}
+                                    </div>
+                                    <div class="col-md col align-self-center">
+                                        {{ form.SEO_url }}
+                                        <p style="color: red">{{ form.SEO_url.errors.as_text }}</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" style="margin: 25px">
+                                    <div class="col-md-2" style="font-size: 20px">
+                                        {{ form.SEO_title.label }}
+                                    </div>
+                                    <div class="col-md col align-self-center"> {{ form.SEO_title }}
+                                        <p style="color: red">{{ form.SEO_title.errors.as_text }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 25px">
+                                    <div class="col-md-2" style="font-size: 20px">
+                                        {{ form.SEO_keywords.label }}
+                                    </div>
+                                    <div class="col-md col align-self-center"> {{ form.SEO_keywords }}
+                                        <p style="color: red">{{ form.SEO_keywords.errors.as_text }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 25px">
+                                    <div class="col-md-2" style="font-size: 20px">
+                                        {{ form.SEO_description.label }}
+                                    </div>
+                                    <div class="col-md col align-self-center"> {{ form.SEO_description }}
+                                        <p style="color: red">{{ form.SEO_description.errors.as_text }}</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    {# SEO блок end#}
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 offset-md-3">
+                            <button class="btn btn-secondary" type="submit" >Сохранить</button>
+                        </div>
+                        <div class="col-md-5 offset-md-1">
+                            <button class="btn btn-secondary " type="reset">Вернуть базовую версию</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</div>
+
+    <br><br><br><br>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#image').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#id_film_main_image").change(function(){
+            readURL(this);
+        });</script>
+
+
+{% endblock %}

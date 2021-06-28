@@ -1,0 +1,51 @@
+{% load adminlte_helpers i18n %}
+{% load static %}
+{% include 'admin/base.html' %}
+{% block page_content %}
+
+
+<div class="content-wrapper" style="background-color: white">
+    <section class="content" >
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <h1>Удалить акцию {{ promo.promo_name }}?</h1>
+                </div>
+            </div>
+            <br><br>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                <div class="col-6" style="position: center">
+
+                    <div class="col"><h3>Данные акции</h3></div>
+                    <div class="col">Описание       : {{ promo.promo_descriptions|safe }}</div>
+                    <div class="col">Дата публикации: {{ promo.published_date }}</div>
+                    <div class="col">Изображение    : <img src="{{ promo.promo_main_image.url }}" alt="-"> </div>
+
+                </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="container-fluid">
+                <form method="post">
+                    {% csrf_token %}
+                <div class="row justify-content-center">
+                    <div class="col-6" style="position: center">
+                        <button class="btn btn-secondary">Удалить</button>
+
+                        <a href="{% url 'promo_view' %}">
+                            <button  type="button" class="btn btn-secondary">Отменить</button>
+                        </a>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+    <br><br><br>
+
+
+{% endblock %}

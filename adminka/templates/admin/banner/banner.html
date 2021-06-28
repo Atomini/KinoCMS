@@ -1,0 +1,36 @@
+{% load static %}
+{% load widget_tweaks %}
+{% include 'admin/base.html' %}
+{% block page_content %}
+
+<div class="content-wrapper" style="background-color: white">
+
+    <!-- Main content -->
+    <section class="content" >
+        <div class="container-fluid">
+
+            <form method="post" enctype='multipart/form-data' >
+                {% csrf_token %}
+
+                {{ end_form.as_p }}
+                {{ promo_form.as_p }}
+                {{ top_form.as_p }}
+                {{ setting_form.as_p }}
+                {{ upper_form.as_p }}
+
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 offset-md-3">
+                            <button class="btn btn-secondary" type="submit" >Сохранить</button>
+                        </div>
+                    </div>
+                 </div>
+
+            </form>
+        </div>
+    </section>
+</div>
+
+    <br><br><br><br>
+
+{% endblock %}

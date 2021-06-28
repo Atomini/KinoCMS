@@ -1,0 +1,108 @@
+{% extends 'site_base.html' %}
+{% load widget_tweaks %}
+
+{% block page %}
+
+   <div class="conteiner">
+    <div class="row justify-content-center" >
+    <div class="col-4"><h1>Регистрация</h1></div>
+    </div>
+    </div>
+    <br>
+
+    <div class="conteiner" >
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8" style="background-color: lightgrey; padding: 0">
+                <div class="form-group">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-4"> {{ form.first_name.label }}</div>
+                            <div class="col">{{ form.first_name|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.last_name.label }}</div>
+                            <div class="col">{{ form.last_name|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.username.label }}</div>
+                            <div class="col">{{ form.username|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.email.label }}</div>
+                            <div class="col">{{ form.email|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.address.label }}</div>
+                            <div class="col">{{ form.address|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.password1.label }}</div>
+                            <div class="col">{{ form.password1|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.password2.label }}</div>
+                            <div class="col">{{ form.password2|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.card_num.label }}</div>
+                            <div class="col">{{ form.card_num|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.language.label }}</div>
+                            <div class="col">{{ form.language|add_class:"form-select" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.sex.label }}</div>
+                            <div class="col">{{ form.sex|add_class:"form-select" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.phone.label }}</div>
+                            <div class="col">{{ form.phone|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.birth_date.label }}</div>
+                            <div class="col">{{ form.birth_date|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"> {{ form.city.label }}</div>
+                            <div class="col">{{ form.city|add_class:"form-control" }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                        <div class="col-4 offset-4">
+                        <button class="btn btn-secondary">Регистрация</button>
+                        </div></div>
+                    </form>
+                </div>
+                <br><br><br>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

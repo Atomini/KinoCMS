@@ -1,0 +1,138 @@
+{% load adminlte_helpers i18n %}
+{% load static %}<!DOCTYPE html>
+
+
+<head>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'admin-lte/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'admin-lte/dist/css/adminlte.min.css' %}">
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<!-- Site wrapper -->
+{#<div class="wrapper">#}
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+    <!-- Sidebar -->
+    <div class="sidebar" >
+        <a href="/" class="brand-link" style="width: 240px">
+            <img src="/static/media/cinema-logo.png" height="110px" alt="logo" class="nav-item" style="opacity: .8">
+        </a>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item" style="margin-top: 10px">
+            <a href="{% url 'statistic' %}" class="nav-link">
+              <p>
+                Статистика
+              </p></a></li>
+
+            <li class="nav-item">
+                <a href="{% url 'banner' %}" class="nav-link">
+              <p>
+                Баннера/Слайдеры
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="{% url 'film_view' %}" class="nav-link">
+              <p>
+                Фильмы
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Кинотеатры
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="{% url 'news_view' %}" class="nav-link">
+              <p>
+                Новости
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="{% url 'promo_view' %}" class="nav-link">
+              <p>
+                Акции
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="{% url "pages" %}" class="nav-link">
+              <p>
+                Страницы
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="{% url "user" %}" class="nav-link">
+              <p>
+                Пользователи
+              </p></a></li>
+
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                Рассылка
+              </p></a></li>
+
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+{#    <div class="content-wrapper" style="size: auto">#}
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="top-panel">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 offset-md-2"style="height: 107px">
+                                <div class="logo"><img src="/static/media/cinema-logo.png"  height="100px" alt="image not found"
+                                       style="display: none"></div>
+                            </div>
+                        <div class="col-md-2 offset-md-5">
+                            Добро пожаловать,
+                            <p>{{ user.get_full_name }}</p>
+                        </div>
+                        <div class="col-md-1">
+                                <a href="/admin/logout">
+                                <div class="logo"><img src="/static/media/off_button.png" height="50px" alt="image not found">
+                                </div>
+                                </a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+
+        {% block page_content %}
+
+        {% endblock %}
+
+
+<!-- ./wrapper -->
+
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static 'admin-lte/plugins/jquery/jquery.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'admin-lte/dist/js/adminlte.js' %}"></script>
+</body>
+

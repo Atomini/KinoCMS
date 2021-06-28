@@ -1,0 +1,99 @@
+{% load adminlte_helpers i18n %}
+{% load static %}
+{% include 'admin/base.html' %}
+{% block page_content %}
+
+
+    <div class="content-wrapper" style="background-color: white">
+        <section class="content" >
+            <div class="container-fluid">
+                <div class="row " style="margin-bottom: 30px">
+                    <div class="col-4 offset-md-4">
+                    <h2>Список фильмов текущих</h2>
+                    </div>
+                    <div class="col-2 offset-md-1 align-self-center">
+                        <a href="{% url "addfilm" %}"><button class="btn btn-secondary" >Добавить фильм</button></a>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        {% for film in film_list %}
+                            {% if film.status ==  'in_show'%}
+
+                            <div class="col-md-3">
+                                <div class="col-md-3" style="height: 300px">
+                                    <img class="film-image" src="{{ film.film_main_image.url }}"
+                                         alt="изображение не загруженно(" style="max-width: 250px; max-height: 300px ">
+                                </div>
+
+                                    <div class="name align-self-end" style="height: 25px; margin-bottom: 15px">
+                                        <h3>{{ film.film_name }}</h3></div>
+
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <a href="{% url 'film_update' film.slug %}">
+                                                <button class="btn btn-secondary">Изменить</button>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="{% url 'film_delete' film.slug %}">
+                                                <button class="btn btn-secondary">Удалить</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <br><br>
+                 <div class="row " style="margin-bottom: 30px">
+                    <div class="col-4 offset-md-4">
+                    <h2>Скоро в показе</h2>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+
+                        {% for film in film_list %}
+                            {% if film.status == "soon" %}
+
+
+                            <div class="col-md-3">
+                                <div class="col-md-3" style="height: 300px">
+                                    <img class="film-image" src="{{ film.film_main_image.url }}"
+                                         alt="изображение не загруженно(" style="max-width: 250px; max-height: 300px ">
+                                </div>
+
+                                    <div class="name align-self-end" style="height: 25px; margin-bottom: 15px">
+                                        <h3>{{ film.film_name }}</h3></div>
+
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <a href="{% url 'film_update' film.slug %}">
+                                                <button class="btn btn-secondary">Изменить</button>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="{% url 'film_delete' film.slug %}">
+                                                <button class="btn btn-secondary">Удалить</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

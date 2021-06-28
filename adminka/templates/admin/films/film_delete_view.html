@@ -1,0 +1,41 @@
+{% load static %}
+{% include 'admin/base.html' %}
+{% block page_content %}
+
+<div class="content-wrapper" style="background-color: white">
+    <section class="content" >
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <h1>Удалить фильм {{ film.film_name }}?</h1>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                <div class="col-6" style="position: center">
+                        <img class="film-image" src="{{ film.film_main_image.url }}"
+                             alt="изображение не загруженно(" style="max-width: 400px; max-height: 400px ">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="container-fluid">
+                <form method="post">
+                    {% csrf_token %}
+                <div class="row justify-content-center">
+                    <div class="col-6" style="position: center">
+                    <button class="btn btn-secondary">Удалить</button>
+                    <a href="{% url 'film_view' %}">
+                        <button  type="button" class="btn btn-secondary">Отменить</button>
+                    </a>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,199 @@
+{% load static %}
+{% include 'admin/base.html' %}
+{% load widget_tweaks %}
+{% block page_content %}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/fontawesome-free/css/all.min.css">
+<!-- daterange picker -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/daterangepicker/daterangepicker.css">
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- Bootstrap Color Picker -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/static/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Bootstrap4 Duallistbox -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+<!-- BS Stepper -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/bs-stepper/css/bs-stepper.min.css">
+<!-- dropzonejs -->
+<link rel="stylesheet" href="/static/admin-lte/plugins/dropzone/min/dropzone.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/static/admin-lte/dist/css/adminlte.min.css">
+
+
+
+
+<div class="content-wrapper" style="background-color: white">
+    <section class="content" >
+        <div class="container-fluid">
+            <form method="post" enctype="multipart/form-data" >
+
+                {% csrf_token %}
+
+
+                <div class="row">
+                    <div class="col">
+
+                        <div class="col"> {{ form.first_name.label }}</div>
+                        <div class="col">{{ form.first_name|add_class:"form-control" }}
+                            <p style="color: red">{{ form.first_name.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+
+                        <div class="col"> {{ form.last_name.label }}</div>
+                        <div class="col">{{ form.last_name|add_class:"form-control" }}
+                            <p style="color: red">{{ form.last_name.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.username.label }}</div>
+                        <div class="col">{{ form.username|add_class:"form-control" }}
+                            <p style="color: red">{{ form.username.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+
+                        <div class="col"> {{ form.email.label }}</div>
+                        <div class="col"> {{ form.email|add_class:"form-control" }}
+                                <p style="color: red">{{ form.email.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.address.label }}</div>
+                        <div class="col">{{ form.address|add_class:"form-control" }}
+                            <p style="color: red">{{ form.address.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.card_num.label }}</div>
+                        <div class="col">{{ form.card_num|add_class:"form-control" }}
+                                <p style="color: red">{{ form.card_num.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                    </div>
+
+                    <div class="col">
+
+                        <div class="col"> {{ form.language.label }}</div>
+                        <div class="col">{{ form.language|add_class:"form-select" }}
+                            <p style="color: red">{{ form.language.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.sex.label }}</div>
+                        <div class="col">{{ form.sex|add_class:"form-select" }}
+                                <p style="color: red">{{ form.sex.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.phone.label }}</div>
+                        <div class="col">{{ form.phone|add_class:"form-control" }}
+                                <p style="color: red">{{ form.phone.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.is_staff.label }} {{ form.is_staff }}
+                            <p style="color: red">{{ form.is_staff.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.is_active.label }} {{ form.is_active }}
+                            <p style="color: red">{{ form.is_active.errors.as_text }}</p>
+                        </div>
+                        <br>
+
+                        <div class="col"> {{ form.birth_date.label }}</div>
+
+                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                            <div class="col">{{ form.birth_date|attr:"class:form-control datetimepicker-input"|attr:"type:text"|attr:"data-target:#reservationdate"|attr:"name:birthday"}}
+                                    <p style="color: red">{{ form.birth_date.errors.as_text }}</p>
+                            </div>
+                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="col"> {{ form.city.label }}</div>
+                        <div class="col">{{ form.city|add_class:"form-control" }}
+                            <p style="color: red">{{ form.city.errors.as_text }}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <br>
+                <div class="row">
+                    <div class="col-4 offset-4">
+                        <button type="submit" class="btn btn-secondary">Сохранить</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- date-range-picker -->
+<script src="/static/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- jQuery -->
+<script src="/static/admin-lte/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="/static/admin-lte/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="/static/admin-lte/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="/static/admin-lte/plugins/moment/moment.min.js"></script>
+<script src="/static/admin-lte/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="/static/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="/static/admin-lte/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/static/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="/static/admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="/static/admin-lte/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="/static/admin-lte/plugins/dropzone/min/dropzone.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/admin-lte/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/admin-lte/dist/js/demo.js"></script>
+<!-- Page specific script -->
+
+
+<script>
+  $(function () {
+     //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'DD.MM.YYYY'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+  })
+</script>
+
+
+{% endblock %}

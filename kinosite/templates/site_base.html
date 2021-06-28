@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>KinoCMS</title>
+    {% load static %}
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<style>
+   body {
+       background: #c7b39b url("/static/baner/cinema-night-can-be-used-for-flyer-poster-banner-ad-and-website-background_7547-45.jpg") no-repeat;
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background-size: 100%; /* Современные браузеры */
+       color: black; /* Цвет текста */
+   }
+</style>
+<body>
+
+{% block top_baner %}
+{% include 'banners.html' %}
+{% endblock %}
+
+{% block menu %}
+{% include 'menu.html' %}
+{% endblock %}
+
+
+
+<div class="conteiner" >
+    <div class="row">
+        <div class="col-8 offset-2" style="padding: 0; margin-top: 10px">
+        {% block slider %}
+        {% include "slider.html" %}
+        {% endblock %}
+  </div>
+</div>
+
+<div class="conteiner" >
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8" style="background-color: lightgrey; padding: 0">
+
+        {% block page %}
+
+        {% endblock %}
+
+        {% block promotions %}
+                {% include 'promotions.html' %}
+        {% endblock %}
+
+
+        {% block adds %}
+            {% include "bottom_adds.html" %}
+        {% endblock %}
+
+        {% block seo %}
+            {% include "seo_text.html" %}
+        {% endblock %}
+            <hr>
+        {% block bottom_menu %}
+
+        {% endblock %}
+
+        </div>
+
+        <div class="col-2">
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
