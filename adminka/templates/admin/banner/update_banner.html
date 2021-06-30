@@ -1,0 +1,175 @@
+{% load static %}
+{% load widget_tweaks %}
+{% include 'admin/base.html' %}
+{% block page_content %}
+
+<div class="content-wrapper" style="background-color: white">
+
+    <!-- Main content -->
+    <section class="content" >
+        <div class="container-fluid">
+
+            <form method="post" enctype='multipart/form-data' >
+                {% csrf_token %}
+
+                <div class="row align-content-center"><h1>Баннер на верху сайта</h1></div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                        {{ setting_form.enable_upper_banner.label }}
+                    </div>
+                    <div class="col-md-3 col align-self-center"> {{ setting_form.enable_upper_banner }}
+                        <p style="color: red">{{ setting_form.enable_upper_banner.errors.as_text }}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                        {{ setting_form.speed_upper_banner.label }}
+                    </div>
+                    <div class="col-md-3 col align-self-center"> {{ setting_form.speed_upper_banner }}
+                        <p style="color: red">{{ setting_form.speed_upper_banner.errors.as_text }}</p>
+                    </div>
+                </div>
+
+                <div class="row">Размер:  1000х190</div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-5 col align-self-center">
+                        <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_main" style="height:250px"></div>
+                        <div class="row">{{ upper_form.image }}
+                            <p style="color: red">{{ upper_form.image.errors.as_text }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ upper_form.url.label }}</div>
+                            <div class="col">{{ upper_form.url }}</div>
+                                <p style="color: red">{{ upper_form.url.errors.as_text }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ upper_form.banner_text.label}}</div>
+                            <div class="col">{{ upper_form.banner_text }}</div>
+                                <p style="color: red">{{ upper_form.banner_text.errors.as_text }}</p>
+                        </div>
+                    </div>
+                </div>
+
+{#     ------------------------------------------------------------------           #}
+
+                <div class="row align-content-center"><h1>Верхние баннеры</h1></div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                        {{ setting_form.enable_top_banner.label }}
+                    </div>
+                    <div class="col-md-3 col align-self-center"> {{ setting_form.enable_top_banner }}
+                        <p style="color: red">{{ setting_form.enable_top_banner.errors.as_text }}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                        {{ setting_form.speed_top_banner.label }}
+                    </div>
+                    <div class="col-md-3 col align-self-center"> {{ setting_form.speed_top_banner }}
+                        <p style="color: red">{{ setting_form.speed_top_banner.errors.as_text }}</p>
+                    </div>
+                </div>
+
+                <div class="row">Размер:  1000х190</div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-5 col align-self-center">
+                        <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_main" style="height:250px"></div>
+                        <div class="row">{{ top_form.image }}
+                            <p style="color: red">{{ top_form.image.errors.as_text }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ top_form.url.label }}</div>
+                            <div class="col">{{ top_form.url }}</div>
+                                <p style="color: red">{{ op_form.url.errors.as_text }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ top_form.banner_text.label}}</div>
+                            <div class="col">{{ top_form.banner_text }}</div>
+                                <p style="color: red">{{ top_form.banner_text.errors.as_text }}</p>
+                        </div>
+                    </div>
+                </div>
+
+{#     ------------------------------------------------------------------           #}
+
+                <div class="row align-content-center"><h1>Сквозной банер на заднем фоне</h1></div>
+
+                <div class="row">Размер:  1000х190</div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-5 col align-self-center">
+                        <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_main" style="height:250px"></div>
+                        <div class="row">{{ end_form.image }}
+                            <p style="color: red">{{ end_form.image.errors.as_text }}</p>
+                        </div>
+                        <div class="row">{{ end_form.back_color }}
+                            <p style="color: red">{{ end_form.back_color.errors.as_text }}</p>
+                        </div>
+                    </div>
+                </div>
+
+{#     ------------------------------------------------------------------           #}
+                <div class="row align-content-center"><h1>Акции</h1></div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                        {{ setting_form.enable_promotion_banner.label }}
+                    </div>
+                    <div class="col-md-3 col align-self-center"> {{ setting_form.enable_promotion_banner }}
+                        <p style="color: red">{{ setting_form.enable_promotion_banner.errors.as_text }}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-2 offset-md-1" style="font-size: 20px">
+                        {{ setting_form.speed_promotion_banner.label }}
+                    </div>
+                    <div class="col-md-3 col align-self-center"> {{ setting_form.speed_promotion_banner }}
+                        <p style="color: red">{{ setting_form.speed_promotion_banner.errors.as_text }}</p>
+                    </div>
+                </div>
+
+                <div class="row">Размер:  1000х190</div>
+
+                <div class="row" style="margin: 25px">
+                    <div class="col-md-5 col align-self-center">
+                        <div class="row"><img src="{% static 'media/not_download.jpg' %}" alt="Изображение" id="image_main" style="height:250px"></div>
+                        <div class="row">{{ promo_form.image }}
+                            <p style="color: red">{{ promo_form.image.errors.as_text }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ promo_form.url.label }}</div>
+                            <div class="col">{{ promo_form.url }}</div>
+                                <p style="color: red">{{ promo_form.url.errors.as_text }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ promo_form.banner_text.label}}</div>
+                            <div class="col">{{ promo_form.banner_text }}</div>
+                                <p style="color: red">{{ promo_form.banner_text.errors.as_text }}</p>
+                        </div>
+                    </div>
+                </div>
+{#     ------------------------------------------------------------------           #}
+
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 offset-md-3">
+                            <button class="btn btn-secondary" type="submit" >Сохранить</button>
+                        </div>
+                    </div>
+                 </div>
+
+            </form>
+        </div>
+    </section>
+</div>
+
+    <br><br><br><br>
+
+{% endblock %}

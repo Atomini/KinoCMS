@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .forms import *
 from .models import *
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 # страница статистика
@@ -144,41 +144,76 @@ class PageListView(ListView):
 
 
 # ---------------------------Банеры --------------------------
-def banner_view(request):
+# def banner_view(request):
+#
+#     if request.method == 'POST':  # If the form has been submitted...
+#         upper_banner_form = UpperBannerForm(request.POST, prefix="upper")
+#         top_banner_form = TopBannerForm(request.POST, prefix="top")
+#         end_form = EndToEndForm(request.POST, prefix="end")
+#         promotion_form = PromotionBannerForm(request.POST, prefix="promo")
+#         setting_form = BannerSettingForm(request.POST, prefix="setting")
+#
+#         if upper_banner_form.is_valid() and top_banner_form.is_valid() and end_form.is_valid() and promotion_form.is_valid() and setting_form.is_valid():
+#
+#             primary = upper_banner_form.save()
+#             top_banner_form.cleaned_data["top"] = primary
+#             b = top_banner_form.save()
+#             end_form.cleaned_data["end"] = primary
+#             c = end_form.save()
+#             promotion_form.cleaned_data["promo"] = primary
+#             d = promotion_form.save()
+#             setting_form.cleaned_data["setting"] = primary
+#             e = setting_form.save()
+#
+#             return HttpResponseRedirect("/admin/banner/")
+#
+#
+#     else:
+#         upper_banner_form = UpperBannerForm(prefix="upper")
+#         top_banner_form = TopBannerForm(prefix="top")
+#         end_form = EndToEndForm(prefix="end")
+#         promotion_form = PromotionBannerForm(prefix="promo")
+#         setting_form = BannerSettingForm(prefix="setting")
+#
+#         return render(request, 'admin/banner/banner.html', {
+#             'upper_form': upper_banner_form,
+#             'top_form': top_banner_form,
+#             'end_form': end_form,
+#             'promo_form': promotion_form,
+#             'setting_form': setting_form,
+#         })
 
-    if request.method == 'POST':  # If the form has been submitted...
-        upper_banner_form = UpperBannerForm(request.POST, prefix="upper")
-        top_banner_form = TopBannerForm(request.POST, prefix="top")
-        end_form = EndToEndForm(request.POST, prefix="end")
-        promotion_form = PromotionBannerForm(request.POST, prefix="promo")
-        setting_form = BannerSettingForm(request.POST, prefix="setting")
 
-        if upper_banner_form.is_valid() and top_banner_form.is_valid() and end_form.is_valid() and promotion_form.is_valid() and setting_form.is_valid():
+def banner_update(request):
+    templates = 'admin/banner/update_banner.html'
 
-            primary = upper_banner_form.save()
-            top_banner_form.cleaned_data["top"] = primary
-            b = top_banner_form.save()
-            end_form.cleaned_data["end"] = primary
-            c = end_form.save()
-            promotion_form.cleaned_data["promo"] = primary
-            d = promotion_form.save()
-            setting_form.cleaned_data["setting"] = primary
-            e = setting_form.save()
+    upper_banner = get_object_or_404(UpperBanner, id=1)
+    top_banner = get_object_or_404(TopBanner, id=1)
+    end_banner = get_object_or_404(EndToEnd, id=1)
+    promo_banner = get_object_or_404(PromotionBanner, id=1)
+    setting_banner = get_object_or_404(BannerSetting, id=1)
 
-            return HttpResponseRedirect("/admin/banner/")
+    upper_banner_form = UpperBannerForm(request.POST or None, prefix="upper", instance=upper_banner)
+    top_banner_form = TopBannerForm(request.POST or None, prefix="top", instance=top_banner)
+    end_banner_form = EndToEndForm(request.POST or None, prefix="end", instance=end_banner)
+    promo_banner_form = PromotionBannerForm(request.POST or None, prefix="promo", instance=promo_banner)
+    setting_banner_form = BannerSettingForm(request.POST or None, prefix="setting", instance=setting_banner)
 
+    if upper_banner_form.is_valid() and top_banner_form.is_valid() and end_banner_form.is_valid() and promo_banner_form.is_valid() and setting_banner_form.is_valid():
 
-    else:
-        upper_banner_form = UpperBannerForm(prefix="upper")
-        top_banner_form = TopBannerForm(prefix="top")
-        end_form = EndToEndForm(prefix="end")
-        promotion_form = PromotionBannerForm(prefix="promo")
-        setting_form = BannerSettingForm(prefix="setting")
+        upper_banner_form.save()
+        top_banner_form.save()
+        end_banner_form.save()
+        promo_banner_form.save()
+        setting_banner_form.save()
 
-        return render(request, 'admin/banner/banner.html', {
-            'upper_form': upper_banner_form,
-            'top_form': top_banner_form,
-            'end_form': end_form,
-            'promo_form': promotion_form,
-            'setting_form': setting_form,
-        })
+        return redirect('banner')
+
+    context = {"upper_form": upper_banner_form,
+               "top_form": top_banner_form,
+               'end_form': end_banner_form,
+               'promo_form': promo_banner_form,
+               'setting_form': setting_banner_form,
+               }
+
+    return render(request, templates, context)

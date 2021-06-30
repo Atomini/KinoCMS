@@ -26,7 +26,7 @@ urlpatterns = [
 
     path('pages/', PageListView.as_view(), name='pages'),
     path('pages/edit/<pk>', UpdateMainPageView.as_view(), name='update_main_page'),
-    path('banner/', banner_view, name='banner'),
+    path('banner/', banner_update, name='banner'),
 
     ]
 
